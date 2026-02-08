@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+
 const games = [
   "Roulette",
   "Casino Dice",
@@ -11,9 +13,12 @@ const games = [
   "Andar Bahar"
 ];
 
+
 export default function Games() {
+  const isDarkMode = useSelector((state) => state.user.isDarkMode);
+  const classNames = isDarkMode ? `bg-black text-white` : "bg-white text-[#0b1220]";
   return (
-    <section className="bg-[#071429] text-white px-16 py-20">
+    <section className={`${classNames} px-16 py-20`}>
       <h2 className="text-4xl font-bold text-center mb-4">
         Our Awesome Games
       </h2>

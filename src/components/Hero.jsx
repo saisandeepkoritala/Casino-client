@@ -1,8 +1,12 @@
 import GoldCard from '../assets/HomePageGoldCard.avif';
+import { useSelector} from 'react-redux';
 
 export default function Hero() {
+  
+  const isDarkMode = useSelector((state) => state.user.isDarkMode);
+  const classNames = isDarkMode ? `bg-black text-white` : "bg-white text-[#0b1220]";
   return (
-    <section className="flex flex-col-reverse md:flex-row bg-black text-white px-5 sm:px-10 md:px-20 py-12 md:py-24 justify-between items-center gap-10">
+    <section className={`flex flex-col-reverse md:flex-row ${classNames} px-5 sm:px-10 md:px-20 py-12 md:py-24 justify-between items-center gap-10`}>
       
       {/* Text Content */}
       <div className="max-w-xl text-center md:text-left">
@@ -10,16 +14,16 @@ export default function Hero() {
           Play online games <br /> and win a lot of bonuses
         </h1>
 
-        <p className="mt-4 sm:mt-6 text-gray-300 text-sm sm:text-base md:text-lg">
+        <p className="mt-4 sm:mt-6   text-sm sm:text-base md:text-lg">
           A virtual casino platform built for fun and practice.
           No real money involved — just games & experience.
         </p>
 
         <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-          <button className="bg-yellow-400 text-black px-6 py-3 rounded w-full sm:w-auto">
+          <button className={`bg-yellow-400 ${classNames.split(' ')[0]} px-6 py-3 rounded w-full sm:w-auto`}>
             Sign Up
           </button>
-          <button className="border border-yellow-400 px-6 py-3 rounded w-full sm:w-auto">
+          <button className={`border border-yellow-400 ${classNames.split(' ')[0]} px-6 py-3 rounded w-full sm:w-auto`}>
             Sign In
           </button>
         </div>
