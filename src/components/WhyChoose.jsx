@@ -1,4 +1,4 @@
-export default function WhyChooseXaxino() {
+export default function WhyChoose() {
   const items = [
     {
       title: "Unmatched Game Variety",
@@ -30,7 +30,7 @@ export default function WhyChooseXaxino() {
     <section className="bg-[#050d26] text-white py-20">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-4">
-          Why Choose Xaxino
+          Why Choose Casino
         </h2>
         <p className="text-center text-gray-400 mb-12">
           Here’s why players around the world trust us.
