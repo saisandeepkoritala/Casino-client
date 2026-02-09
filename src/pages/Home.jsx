@@ -9,21 +9,57 @@ import CasinoSections from "../components/Testimonals";
 import Payments from "../components/Payments";
 import {JoinCasino,HowCasinoWorks,FAQ} from "../components/ShowOff";
 
+
 export default function Home() {
   return (
     <>
-      <Navbar />
-      <Hero />
-      <Stats />
-      <Games />
-      <AboutUs />
-      <WhyChoose />
-      <LatestTransactions />
-      <JoinCasino />
-      <HowCasinoWorks />
-      <FAQ />
-      <CasinoSections />
-      <Payments />
-    </>
+    <section id="navbar">
+        <Navbar />
+      </section>
+      <section id="home">
+        <Hero />
+      </section>
+
+      <section id="stats">
+        <Stats />
+      </section>
+
+      <section id="games">
+        <Games />
+      </section>
+
+      <section id="about">
+        <AboutUs />
+      </section>
+
+      <section id="why">
+        <WhyChoose />
+      </section>
+
+      <section id="transactions">
+        <LatestTransactions />
+      </section>
+
+      <section id="contact">
+        <JoinCasino />
+      </section>
+
+      <section id="how">
+        <HowCasinoWorks />
+      </section>
+
+      <section id="faq">
+        <FAQ />
+      </section>
+
+      <section id="blogs">
+        <CasinoSections />
+      </section>
+
+      <section id="payments">
+        <Payments />
+      </section>
+      </>
   );
 }
+

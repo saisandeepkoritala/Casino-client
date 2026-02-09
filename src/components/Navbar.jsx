@@ -37,11 +37,12 @@ export default function Navbar() {
           isOpen ? "block" : "hidden sm:flex"
         }`}
       >
-        <li className="px-4 py-4 sm:p-0 hover:border-b-2 hover:border-yellow-400 ">Home</li>
-        <li className="px-4 py-4 sm:p-0 hover:border-b-2 hover:border-yellow-400 ">About</li>
-        <li className="px-4 py-4 sm:p-0 hover:border-b-2 hover:border-yellow-400 ">Games</li>
-        <li className="px-4 py-4 sm:p-0 hover:border-b-2 hover:border-yellow-400 ">Blog</li>
-        <li className="px-4 py-4 sm:p-0 hover:border-b-2 hover:border-yellow-400 ">Contact</li>   
+        <li className="px-4 py-4 sm:p-0 hover:border-b-2 hover:border-yellow-400 cursor-pointer" 
+        onClick={() => window.location.href = "#home"}>Home</li>
+        <li className="px-4 py-4 sm:p-0 hover:border-b-2 hover:border-yellow-400 cursor-pointer" onClick={() => window.location.href = "#about"}>About</li>
+        <li className="px-4 py-4 sm:p-0 hover:border-b-2 hover:border-yellow-400 cursor-pointer" onClick={() => window.location.href = "#games"}>Games</li>
+        <li className="px-4 py-4 sm:p-0 hover:border-b-2 hover:border-yellow-400 cursor-pointer" onClick={() => window.location.href = "#blogs"}>Blog</li>
+        <li className="px-4 py-4 sm:p-0 hover:border-b-2 hover:border-yellow-400 cursor-pointer" onClick={() => window.location.href = "#contact"}>Contact</li>   
       </ul>
 
       {/* Light and dark mode toggle */}

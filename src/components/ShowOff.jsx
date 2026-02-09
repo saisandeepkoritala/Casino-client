@@ -1,16 +1,19 @@
 import { useState } from "react";
 import { UserPlus, Wallet, Gamepad2, Trophy, ChevronDown } from "lucide-react";
+import { useSelector } from "react-redux";
 
 /* ============================
    1. CTA / JOIN SECTION
 ============================ */
 export function JoinCasino() {
+  const isDarkMode = useSelector((state) => state.user.isDarkMode);
+  const classNames = isDarkMode ? `bg-black text-white` : "bg-white text-[#0b1220]";
   return (
-    <section className="bg-gradient-to-b from-[#0a1430] to-[#070d22] py-24 text-center text-white relative overflow-hidden">
+    <section className={isDarkMode ? `${classNames} bg-gradient-to-b from-[#0a1430] to-[#070d22] py-24 text-center relative overflow-hidden` : `${classNames}  py-24 text-center relative overflow-hidden`}>
       <h2 className="text-4xl md:text-5xl font-bold mb-6">
         Ready to Play? Join Casino Today!
       </h2>
-      <button className="mt-4 bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-8 py-3 rounded-lg shadow-lg transition">
+      <button className={`${classNames} mt-4 bg-yellow-500 hover:bg-yellow-400 font-semibold px-8 py-3 rounded-lg shadow-lg transition`}>
         JOIN NOW
       </button>
     </section>
@@ -21,6 +24,8 @@ export function JoinCasino() {
    2. HOW CASINO WORKS
 ============================ */
 export function HowCasinoWorks() {
+  const isDarkMode = useSelector((state) => state.user.isDarkMode);
+  const classNames = isDarkMode ? `bg-black text-white` : "bg-white text-[#0b1220]";
   const steps = [
     {
       icon: UserPlus,
@@ -45,7 +50,7 @@ export function HowCasinoWorks() {
   ];
 
   return (
-    <section className="bg-[#070d22] py-24 text-white">
+    <section className={`${classNames} py-24`}>
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
         How Casino Works
       </h2>
@@ -54,7 +59,7 @@ export function HowCasinoWorks() {
         {steps.map((step, i) => (
           <div
             key={i}
-            className="text-center bg-[#0a1430] rounded-2xl p-8 shadow-lg"
+            className={`${classNames} text-center bg-[#0a1430] rounded-2xl p-8 shadow-lg`}
           >
             <step.icon className="w-12 h-12 mx-auto text-yellow-400 mb-4" />
             <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
@@ -70,6 +75,8 @@ export function HowCasinoWorks() {
    3. FAQ SECTION
 ============================ */
 export function FAQ() {
+  const isDarkMode = useSelector((state) => state.user.isDarkMode);
+  const classNames = isDarkMode ? `bg-black text-white` : "bg-white text-[#0b1220]";
   const faqs = [
     {
       question: "What is Casino?",
@@ -100,11 +107,12 @@ export function FAQ() {
   const [open, setOpen] = useState(null);
 
   return (
-    <section className="bg-gradient-to-b from-[#0a1430] to-[#070d22] py-24 text-white">
+    <section className={isDarkMode?`${classNames} bg-gradient-to-b from-[#0a1430] to-[#070d22] py-24`:`${classNames} bg-gradient-to-b from py-24`}>
+      
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
         Frequently Asked Questions
       </h2>
-      <p className="text-center text-gray-300 mb-12">
+      <p className={`${classNames.split(" ")[1]} text-center mb-12`}>
         Everything you need to know to get started with Casino.
       </p>
 
@@ -112,7 +120,7 @@ export function FAQ() {
         {faqs.map((faq, i) => (
           <div
             key={i}
-            className="bg-[#0a1430] rounded-xl px-6 py-4 cursor-pointer"
+            className={`${classNames} bg-[#0a1430] rounded-xl px-6 py-4 cursor-pointer`}
             onClick={() => setOpen(open === i ? null : i)}
           >
             <div className="flex items-center justify-between">
@@ -124,7 +132,7 @@ export function FAQ() {
               />
             </div>
             {open === i && (
-              <p className="mt-4 text-sm text-gray-300">
+              <p className={`mt-4 text-sm ${classNames.split(" ")[1]}`}>
                 {faq.answer}
               </p>
             )}
@@ -134,18 +142,3 @@ export function FAQ() {
     </section>
   );
 }
-
-/* ============================
-   USAGE EXAMPLE
-============================ */
-// import { JoinCasino, HowCasinoWorks, FAQ } from './CasinoComponents';
-// 
-// export default function Page() {
-//   return (
-//     <>
-//       <JoinCasino />
-//       <HowCasinoWorks />
-//       <FAQ />
-//     </>
-//   );
-// }

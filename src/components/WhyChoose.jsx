@@ -1,4 +1,9 @@
+import { useSelector } from "react-redux";
+
 export default function WhyChoose() {
+  const isDarkMode = useSelector((state) => state.user.isDarkMode);
+  const classNames = isDarkMode ? `bg-black text-white` : "bg-white text-[#0b1220]";
+
   const items = [
     {
       title: "Unmatched Game Variety",
@@ -27,12 +32,12 @@ export default function WhyChoose() {
   ];
 
   return (
-    <section className="bg-[#050d26] text-white py-20">
+    <section className={`${classNames} py-20`}>
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-4">
           Why Choose Casino
         </h2>
-        <p className="text-center text-gray-400 mb-12">
+        <p className={`text-center ${classNames} mb-12`}>
           Here’s why players around the world trust us.
         </p>
 
@@ -40,12 +45,12 @@ export default function WhyChoose() {
           {items.map((item, i) => (
             <div
               key={i}
-              className="bg-[#07183a] border border-white/10 rounded-xl p-6 hover:border-yellow-500 transition"
+              className={`${classNames} border border-white/10 rounded-xl p-6 hover:border-yellow-500 transition`}
             >
               <h3 className="text-xl font-semibold mb-3 text-yellow-400">
                 {item.title}
               </h3>
-              <p className="text-gray-300 text-sm">
+              <p className={`${classNames} text-sm`}>
                 {item.desc}
               </p>
             </div>

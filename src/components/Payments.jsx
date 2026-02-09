@@ -1,19 +1,31 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
+import Pic1 from "../payments/visa.svg";
+import Pic2 from "../payments/worldpay.png";
+import Pic3 from "../payments/visa-electron.svg";
+import Pic4 from "../payments/amex.svg";
+import Pic5 from "../payments/mastercard.svg";
+import Pic6 from "../payments/visa2.svg";
+import Pic7 from "../payments/visa3.svg";
+import Pic8 from "../payments/maestro.svg";
 
 const payments = [
-  "/payments/visa.svg",
-  "/payments/worldpay.png",
-  "/payments/visa-electron.svg",
-  "/payments/amex.svg",
-  "/payments/mastercard.svg",
-  "/payments/visa2.svg",
-  "/payments/visa3.svg",
-  "/payments/maestro.svg",
+  Pic1,
+  Pic2,
+  Pic3,
+  Pic4,
+  Pic5,
+  Pic6,
+  Pic7,
+  Pic8,
 ];
 
 export default function Footer() {
+  const isDarkMode = useSelector((state) => state.user.isDarkMode);
+  const classNames = isDarkMode ? `bg-black text-white` : "bg-white text-[#0b1220]";
   return (
-    <footer className="bg-gradient-to-b from-[#071b3a] to-[#020b1e] text-white">
+    <footer className={isDarkMode ? `${classNames} bg-gradient-to-b from-[#071b3a] to-[#020b1e]` : `${classNames} bg-gradient-to-b from-[#f0f4f8] to-[#e0e7ee]`}>
       {/* Payment methods */}
       <div className="border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-10 text-center">
@@ -27,7 +39,7 @@ export default function Footer() {
                 key={index}
                 src={src}
                 alt="payment method"
-                className="h-10 w-auto bg-white rounded-md px-2 py-1"
+                className={`${classNames} h-10 w-auto rounded-md px-2 py-1`}
               />
             ))}
           </div>
@@ -48,9 +60,9 @@ export default function Footer() {
           <input
             type="email"
             placeholder="Enter email address"
-            className="w-full md:w-72 px-4 py-3 rounded-l-md bg-[#0b1f3f] border border-white/10 placeholder:text-white/50 focus:outline-none"
+            className={`${classNames} w-full md:w-72 px-4 py-3 rounded-l-md border border-white/10 placeholder:text-white/50 focus:outline-none`}
           />
-          <button className="bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-6 rounded-r-md">
+          <button className={`${classNames} bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-6 rounded-r-md`}>
             SUBSCRIBE
           </button>
         </div>
