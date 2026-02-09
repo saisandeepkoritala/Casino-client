@@ -1,19 +1,35 @@
 import { useEffect, useState } from "react";
 
-export default function BonusOverlay({ bonusGrid, coins, spins, onSpin, showBullSplash}) {
-  const [showSplash, setShowSplash] = useState(true); // show splash initially
-  const totalCoins = coins.reduce((sum, c) => sum + c, 0);
+export default function BonusOverlay({
+  bonusGrid,
+  spins,
+  onSpin,
+  showBullSplash,
+  bonusTotal, // new prop for compounded bonus total
+}) {
+  const [displayedTotal, setDisplayedTotal] = useState(0);
 
+  // Animate bonus total
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowSplash(false); // hide splash after 5 seconds
-    }, 2000);
+    let start = displayedTotal;
+    const end = bonusTotal || 0;
+    if (start === end) return;
 
-    return () => clearTimeout(timer);
-  }, []);
+    const increment = Math.ceil((end - start) / 50); // speed of animation
+    const interval = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        start = end;
+        clearInterval(interval);
+      }
+      setDisplayedTotal(start);
+    }, 50);
 
-  // Splash screen for first 5 seconds
-  if (showSplash || showBullSplash) {
+    return () => clearInterval(interval);
+  }, [bonusTotal]);
+
+  // Show splash for new bull
+  if (showBullSplash) {
     return (
       <div className="fixed inset-0 bg-black flex items-center justify-center z-50">
         <h1 className="text-6xl sm:text-8xl font-bold text-yellow-400 animate-pulse">
@@ -23,7 +39,6 @@ export default function BonusOverlay({ bonusGrid, coins, spins, onSpin, showBull
     );
   }
 
-  // Normal bonus overlay UI
   return (
     <div className="fixed inset-0 bg-black/80 flex flex-col items-center justify-center z-50 p-4">
       <div className="bg-slate-900 p-6 rounded-xl text-white text-center w-full max-w-lg">
@@ -31,10 +46,12 @@ export default function BonusOverlay({ bonusGrid, coins, spins, onSpin, showBull
           🐂 BULL BLITZ BONUS
         </h2>
 
+        {/* Spins Left */}
         <p className="mb-4 text-lg">Spins Left: {spins}</p>
 
+        {/* Animated Total Coins */}
         <p className="mb-4 text-xl font-bold text-yellow-300">
-          Total Coins: ${totalCoins}
+          Total Coins: ${displayedTotal}
         </p>
 
         {/* Bonus Grid */}
@@ -45,21 +62,17 @@ export default function BonusOverlay({ bonusGrid, coins, spins, onSpin, showBull
                 <div
                   key={j}
                   className={`h-16 w-16 flex items-center justify-center rounded-lg font-bold
-                    ${
-                      symbol === "BULL"
-                        ? "bg-red-600 text-white"
-                        : symbol === null
-                        ? "bg-slate-700/50"
-                        : "bg-slate-800 text-white"
-                    }`}
+                    ${typeof symbol === "number" ? 
+                      "bg-red-600 text-white" : "bg-slate-700/50 text-slate-700"}`}
                 >
-                  {symbol || ""}
+                  {typeof symbol === "number" ? `$${symbol}` : symbol}
                 </div>
               ))}
             </div>
           ))}
         </div>
 
+        {/* Re-spin Button */}
         <button
           onClick={onSpin}
           className="bg-red-600 hover:bg-red-700 px-8 py-3 rounded-lg font-bold text-lg"
