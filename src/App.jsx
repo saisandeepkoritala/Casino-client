@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import BullBlitz from "./games/BullBlitz/BullBlitz";
+import HighLow from "./games/HighLow/HighLow";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/bullblitz" element={<BullBlitz />} />
+          <Route path="/roulette" element={<HighLow />} />
         </Routes>
       </div>
     </BrowserRouter>
