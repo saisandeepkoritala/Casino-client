@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import BullBlitz from "./games/BullBlitz/BullBlitz";
 import HighLow from "./games/HighLow/HighLow";
+import HeadsOrTails from "./games/HeadsTails/HeadsTails";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/bullblitz" element={<BullBlitz />} />
           <Route path="/roulette" element={<HighLow />} />
+          <Route path="/coin" element={<HeadsOrTails />} />
         </Routes>
       </div>
     </BrowserRouter>

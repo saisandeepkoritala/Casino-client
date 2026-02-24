@@ -6,7 +6,7 @@ export const BONUSWEIGHTS = {
   Q: 26,
   J: 24,
   COIN: 6,
-  BULL: 5,
+  BULL: 10,
 };
 
 export const WEIGHTS = {

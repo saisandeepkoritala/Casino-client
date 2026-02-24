@@ -3,15 +3,15 @@ import { useSelector } from "react-redux";
 const games = [
   "Bull Blitz",
   "Roulette",
-  "Casino Dice",
-  "Black Jack",
-  "Color Prediction",
-  "High Low",
+  "Coin Toss",
+  // "Black Jack",
+  // "Color Prediction",
+  // "High Low",
 ];
 
 import Bull from '../payments/BullBlitz.webp';
 import Roulette from '../payments/Roulette.jpg';
-import CasinoDice from '../payments/Dice.jpg';
+import CoinToss from '../payments/Coin.jpg';
 import BlackJack from '../payments/BlackJack.jpg';
 import Color from '../payments/Color.jpg';
 import HighLow from '../payments/HighLow.jpg';
@@ -19,7 +19,7 @@ import HighLow from '../payments/HighLow.jpg';
 const gameImages = {
   "Bull Blitz": Bull,
   "Roulette": Roulette,
-  "Casino Dice": CasinoDice,
+  "Coin Toss": CoinToss,
   "Black Jack": BlackJack,
   "Color Prediction": Color,
   "High Low": HighLow,
@@ -37,8 +37,8 @@ export default function Games() {
       case "Roulette":
         window.location.href = "/roulette";
         break;
-      case "Casino Dice":
-        window.location.href = "/casino-dice";
+      case "Coin Toss":
+        window.location.href = "/coin";
         break;
       case "Black Jack":
         window.location.href = "/blackjack";
