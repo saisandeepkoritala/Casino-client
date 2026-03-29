@@ -22,7 +22,7 @@ export default function Navbar() {
     <nav className={`${themeClasses} px-5 sm:px-10 py-4 flex justify-between items-center relative transition-colors duration-300`}>
       
       {/* Logo */}
-      <h1 className="text-xl font-bold text-yellow-400">CASINO</h1>
+      <h1 className="text-xl font-bold text-yellow-400">Casino</h1>
 
       {/* Right Side Actions (Theme + Mobile Menu + Buttons) */}
       <div className="flex items-center gap-4">
