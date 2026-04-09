@@ -5,8 +5,7 @@ const games = [
   "Roulette",
   "Coin Toss",
   // "Black Jack",
-  // "Color Prediction",
-  // "High Low",
+  "Color Prediction",
 ];
 
 import Bull from '../payments/BullBlitz.webp';
